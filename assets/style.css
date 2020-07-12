@@ -1,0 +1,208 @@
+/* initial definitions */
+:root {
+	--scroll-pos: 0px;
+	--jj-blue: #35a3c6;
+	--jj-transparent-blue: rgba(53, 163, 198, 0.5);
+	--jj-dark-blue: #195e83;
+	--jj-off-white: #f3f6f9;
+	--jj-slate-gray: #101010;
+	--jj-mid-gray: #808080;
+}
+
+@font-face {
+	font-family: "Autodidact";
+	src: url("Autodidact Regular.otf");
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Raleway";
+	src: url("Raleway Regular.ttf");
+	font-display: swap;
+}
+
+* {
+	font-family: "Raleway", sans-serif;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+h1, h2, h3, h4, h5, h6, button, .button, input, label, select, nav *, .autodidact {
+	font-family: "Autodidact", sans-serif;
+	letter-spacing: 0.05em;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: center;
+}
+
+
+
+/* jj-auto standard navigation */
+nav {
+	flex-grow: 1;
+	height: 100vh;
+	width: 300px;
+	position: fixed;
+	left: -300px;
+	transition: left 0.5s;
+	top: 0;
+	background: rgba(0, 0, 0, 0.3);
+	z-index: 1;
+}
+
+nav.open {
+	left: 0;
+}
+
+nav * {
+	color: var(--jj-off-white);
+	width: 300px;
+	font-weight: 700;
+	text-decoration: none;
+	text-align: center;
+}
+
+nav > #close-nav, nav > #expand-nav {
+	fill: var(--jj-off-white);
+	top: 30px;
+	cursor: pointer;
+	left: 30px;
+}
+
+nav > #close-nav {
+	position: absolute;
+	width: 25px;
+}
+
+nav > #expand-nav {
+	position: fixed;
+	width: 30px;
+	overflow: visible;
+	opacity: 1;
+	transition: opacity 0.3s;
+}
+
+@keyframes hamburger {
+	0%, 20% {
+		transform: translateX(0%);
+	}
+
+	80%, 100% {
+		transform: translateX(50%);
+	}
+}
+
+nav > #expand-nav:hover > :last-child {
+	animation: hamburger 1.3s cubic-bezier(.6, -1, .6, 2) alternate infinite;
+}
+
+nav.open > #expand-nav {
+	opacity: 0;
+	pointer-events: none;
+}
+
+nav > h1 {
+	position: fixed;
+	bottom: 105%;
+	transition: bottom 0.5s;
+	font-size: 5vh;
+	margin: 0;
+}
+
+nav > .container {
+	height: 100vh;
+	position: absolute;
+	top: 10vh;
+	transition: height 0.5s, top 0.5s;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: stretch;
+}
+
+nav > .container > a {
+	font-size: 3vh;
+	height: 8vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+}
+
+nav > .container > a:hover {
+	background: var(--jj-transparent-blue);
+	border: 2px solid var(--jj-dark-blue);
+}
+
+nav.show-logo > h1 {
+	bottom: 80vh;
+}
+
+nav.show-logo > .container {
+	height: 80vh;
+	top: 20vh;
+}
+
+
+
+/* main content */
+main {
+	width: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+main > section {
+	width: 100%;
+}
+
+main > section > .background {
+	position: fixed;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	z-index: -1;
+}
+
+
+
+/* jj-auto standard button */
+.button {
+	padding: 10px;
+	font-size: 3vh;
+	border-radius: 3px;
+	text-decoration: none;
+	transition: all 0.1s ease-in;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.button.open {
+	background: var(--jj-off-white);
+	border: 3px solid var(--jj-blue);
+	color: var(--jj-slate-gray);
+}
+
+.button.filled, .button.open:hover {
+	background: var(--jj-blue);
+	box-shadow: 0 0 2px var(--jj-blue);
+	color: var(--jj-off-white);
+}
