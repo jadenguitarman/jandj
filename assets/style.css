@@ -193,6 +193,7 @@ main > section > .background {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
+	box-sizing: border-box;
 }
 
 .button.open {
