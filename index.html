@@ -26,10 +26,6 @@
 				height: 95vh;
 			}
 
-			section.column-container > img.column {
-				object-fit: cover;
-			}
-
 			section.column,
 			section.column-container > div.column {
 				flex-direction: column;
@@ -241,7 +237,10 @@
 			</section>
 
 			<section id="about" class="column-container">
-				<img class="column" src="https://via.placeholder.com/1000.png?text=Image+at+assets/joe-in-car" alt="Joe working in a car" loading="lazy">
+				<picture class="column">
+					<source srcset="/assets/tire-and-ratchet.webp">
+					<img class="column" src="/assets/tire-and-ratchet.jpg" alt="A tire and a ratchet" loading="lazy">
+				</picture>
 
 				<div class="column">
 					<h2><span class="mechanic-years">44</span> years of practice and counting</h2>
@@ -252,7 +251,10 @@
 			</section>
 
 			<section id="services" class="column">
-				<img src="assets/key-fob.jpg" alt="Logo" class="background"> <!-- retake this -->
+				<picture class="background">
+					<source srcset="/assets/inside-truck.webp">
+					<img class="column" src="/assets/inside-truck.jpg" alt="Joe working on a Chevy's programming" loading="lazy">
+				</picture>
 
 				<h2>Specialized work</h2>
 				<div class="container">
@@ -277,7 +279,10 @@
 			</section>
 
 			<section id="contact">
-				<img src="assets/computer-boards.jpg" alt="Logo" class="background">
+				<picture class="background">
+					<source srcset="/assets/under-truck.webp">
+					<img class="column" src="/assets/under-truck.jpg" alt="Joe working underneath a truck" loading="lazy">
+				</picture>
 			</section>
 		</main>
 

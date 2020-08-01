@@ -49,6 +49,12 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 
+picture > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
 
 
 /* jj-auto standard navigation */
