@@ -1,1 +1,5 @@
-/assets/ignored
+/static/assets/ignored
+
+.netlify
+
+/public

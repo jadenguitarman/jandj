@@ -11,13 +11,13 @@
 
 @font-face {
 	font-family: "Autodidact";
-	src: url("Autodidact Regular.otf");
+	src: url("/assets/Autodidact Regular.woff");
 	font-display: swap;
 }
 
 @font-face {
 	font-family: "Raleway";
-	src: url("Raleway Regular.ttf");
+	src: url("/assets/Raleway Regular.woff");
 	font-display: swap;
 }
 
@@ -28,6 +28,9 @@
 	border: 0;
 }
 
+
+
+/* style some specific elements and classes */
 h1, h2, h3, h4, h5, h6, button, .button, input, label, select, nav *, .autodidact {
 	font-family: "Autodidact", sans-serif;
 	letter-spacing: 0.05em;
@@ -53,6 +56,33 @@ picture > img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+input, select, textarea {
+	border-radius: 3px;
+	border: 2px solid var(--compass-wave-border-color);
+	outline: none;
+	font-size: 18px;
+}
+
+select, option {
+	cursor: pointer;
+}
+
+select > option[disabled] {
+	display: none;
+}
+
+input[name=honeypot] {
+	opacity: 0;
+	width: 0;
+	height: 0;
+	border: 0;
+	pointer-events: none;
+	outline: 0;
+	padding: 0;
+	background: transparent;
+	margin: 0;
 }
 
 
@@ -200,6 +230,7 @@ main > section > .background {
 	justify-content: center;
 	text-align: center;
 	box-sizing: border-box;
+	cursor: pointer;
 }
 
 .button.open {
@@ -212,4 +243,107 @@ main > section > .background {
 	background: var(--jj-blue);
 	box-shadow: 0 0 2px var(--jj-blue);
 	color: var(--jj-off-white);
+}
+
+footer {
+	position: sticky;
+	height: 10vh;
+	background: var(--jj-off-white);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+footer > span > a {
+	font-style: italic;
+	font-family: Autodidact;
+	font-size: 20px;
+	color: #116;
+}
+
+
+/* form inputs */
+
+.form-field {
+	width: 100%;
+	position: relative;
+}
+
+.form-field {
+	min-height: 50px;
+}
+
+.form-field > input[type=text],
+.form-field > input[type=date],
+.form-field > input[type=password],
+.form-field > input[type=email],
+.form-field > input[type=phone],
+.form-field > input[type=file],
+.form-field > input:-webkit-autofill,
+.form-field > select,
+.form-field > textarea {
+	width: 100%;
+	height: 28px;
+	box-sizing: border-box;
+	position: absolute;
+	bottom: 0;
+	color: var(--compass-wave-gray);
+	transition: color 0.5s;
+	background: #fff;
+	left: 0;
+}
+
+.form-field > input[type=text],
+.form-field > input[type=date],
+.form-field > input[type=password],
+.form-field > input[type=email],
+.form-field > input[type=phone],
+.form-field > textarea {
+	padding: 7px 5px 2px 5px;
+}
+
+.form-field > select {
+	padding: 2px 5px 2px 0px;
+}
+
+.form-field > label {
+	--label-top: 26px;
+	--label-left: 5px;
+	color: var(--jj-mid-gray);
+	position: relative;
+	top: var(--label-top);
+	left: var(--label-left);
+	font-style: italic;
+	transition: all 0.3s ease-in, color 0.3s ease-out;
+	font-size: 16px;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.form-field > label > .required {
+	color: red;
+	font-size: 25px;
+	position: absolute;
+	top: -5px;
+}
+
+.form-field > input:not(:placeholder-shown) + label,
+.form-field > input:focus + label,
+.form-field > input:-webkit-autofill + label,
+.form-field > select + label,
+.form-field > input[type=file] + label,
+.form-field > textarea:not(:placeholder-shown) + label,
+.form-field > textarea:focus + label {
+	--label-left: 0px;
+	--label-active-top: 4px;
+	color: var(--dark-label-color);
+	top: var(--label-active-top);
+	left: var(--label-left);
+	font-weight: 700;
+	font-size: 14px;
+}
+
+.form-field > .button.submit {
+	margin-top: 5px;
+	width: 100%;
 }

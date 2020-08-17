@@ -1,0 +1,127 @@
+---
+title: "Home"
+date: 2020-08-16T21:10:09-04:00
+css: "home"
+js: "home"
+additional_js: ["https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"]
+description: "I'm Joe, a knowledgable auto technician who can give you the ability to perform programming and diagnostics in-house to build trust with your customers and retain their business."
+---
+
+<section id="intro">
+	<!--
+		<video class="background" crossorigin="anonymous" autoplay muted>
+			<source type="video/mp4" src="/assets/intro.mp4">
+			<source type="video/webm" src="/assets/intro.webm">
+		</video>
+	-->
+	<picture class="column">
+		<source srcset="/assets/inside-truck.webp">
+		<img class="column" src="/assets/inside-truck.jpg" alt="Temporary" loading="eager">
+	</picture>
+
+	<h1>J &amp; J Auto Programming</h1> <!-- Could we have business name in background video too? -->
+	<div id="cta">
+		<!-- link this to the /schedule page when it's completed -->
+		<a href="#contact" class="button filled" id="schedule-appt-cta">Schedule Appointment</a>
+		<div id="cta-seperator-container">
+			<div id="cta-seperator"></div>
+		</div>
+		<a href="#contact" class="button open" id="contact-cta">Contact</a>
+	</div>
+</section>
+
+<section id="about" class="column-container">
+	<picture class="column">
+		<source srcset="/assets/tire-and-ratchet.webp">
+		<img class="column" src="/assets/tire-and-ratchet.jpg" alt="A tire and a ratchet" loading="lazy">
+	</picture>
+
+	<div class="column">
+		<h2><span class="mechanic-years">44</span> years of practice and counting</h2>
+		<p>When I was 6, my father moved our family to America. In time, he taught himself English and opened a shop in Toms River, New Jersey. At just 12 years old, I was already learning the basics of automobile repair work from him.</p>
+		<p>Fast forward <span class="mechanic-years">44</span> years, and I'm still using the skills he taught me to diagnose programming-related issues with modern vehicles. Equipped with technology that would make him scratch his head, I'm travelling to shops just like my father's in Pennsylvania and Maryland, offering to save them the headache of sending customers to dealerships for programming work they could have done in-house, and in the process, preserving the trust and business of their clientele.</p>
+		<!-- link this to the /schedule page when it's completed -->
+		<a href="#contact" class="button open">Need My Services?</a>
+	</div>
+</section>
+
+<section id="services" class="column">
+	<picture class="background">
+		<source srcset="/assets/inside-truck.webp">
+		<img class="column" src="/assets/inside-truck.jpg" alt="Joe working on a Chevy's programming" loading="lazy">
+	</picture>
+
+	<h2>Specialized work</h2>
+	<div class="container">
+		<div class="service">
+			<h3>Programming</h3>
+			<p>New modules and computers almost always need to be programmed to the vehicle manufacturer's proprietary software.</p>
+		</div>
+		<div class="service">
+			<h3>Diagnostics</h3>
+			<p>I'm fully equipped to diagnose unique issues so shops can spend their time where it earns the most profit.</p>
+		</div>
+		<div class="service">
+			<h3>Consultation</h3>
+			<p>I'm available by video or phone to walk shop technicians through complex diagnostic processes and advanced reset procedures.</p>
+		</div>
+	</div>
+</section>
+
+<section id="certifications">
+	<div class="column">
+
+	</div>
+
+	<div class="column">
+
+	</div>
+</section>
+
+<section id="contact" class="column-container">
+	<picture class="column">
+		<source srcset="/assets/under-truck.webp">
+		<img class="column" src="/assets/under-truck.jpg" alt="Joe working underneath a truck" loading="lazy">
+	</picture>
+
+	<div class="column">
+		<form
+			id="contact-form"
+			name="contact-form"
+			netlify
+			method="post"
+			data-netlify-recaptcha="true"
+			netlify-honeypot="honeypot"
+		>
+			<h2>Contact</h2>
+			<p>Just fill out the form below and I'll get back to you as soon as possible.</p>
+
+			<div class="form-field">
+				<input type="text" name="name" id="name" placeholder=" " data-example="Yogi Bear">
+				<label for="name">Your Name</label>
+			</div>
+
+			<div class="form-field">
+				<input type="email" name="email" id="email" placeholder=" " data-example="yogi.bear@gmail.com">
+				<label for="email">Your Email</label>
+			</div>
+
+			<div class="form-field">
+				<input type="phone" name="phone" id="phone" placeholder=" " data-example="(717) 867-5309">
+				<label for="phone">Your Phone Number</label>
+			</div>
+
+			<div class="form-field">
+				<textarea name="message" id="message" placeholder=" " data-example="Hello, Mr. Ranger, sir..."></textarea>
+				<label for="message">What would you like to ask me?</label>
+			</div>
+
+			<div data-netlify-recaptcha="true"></div>
+			<input name="honeypot">
+
+			<div class="form-field">
+				<button class="button filled submit">Send Message</button>
+			</div>
+		</form>
+	</div>
+</section>
