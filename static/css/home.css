@@ -189,8 +189,10 @@ section.column-container > div.column {
 	--dark-label-color: var(--jj-off-white);
 }
 
-#contact-form input, #contact-form textarea {
+#contact-form input,
+#contact-form textarea {
 	color: var(--jj-slate-gray);
+    resize: none;
 }
 
 @media (min-width:800px) {

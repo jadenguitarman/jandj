@@ -14,9 +14,13 @@
 		{{ block "main" . }}{{ end }}
 
 		{{ range $url := .Params.additional_js }}
-			<script src="{{$url}}"></script>
+			<script defer async src="{{$url}}"></script>
 		{{ end }}
 		<script defer async src="/js/_global.js"></script>
-		<script defer async src="/js/{{ .Params.js }}.js"></script>
+		<script>
+			window.addEventListener("load", () => {
+				{{ readFile (print "/static/js/" .Params.js ".js") | safeJS }}
+			});
+		</script>
 	</body>
 </html>
