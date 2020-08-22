@@ -74,7 +74,7 @@ select > option[disabled] {
 	display: none;
 }
 
-input[name=honeypot] {
+input[name=honeypot], input[name=honeypot] + label {
 	opacity: 0;
 	width: 0;
 	height: 0;
@@ -84,6 +84,8 @@ input[name=honeypot] {
 	padding: 0;
 	background: transparent;
 	margin: 0;
+	font-size: 0;
+	color: transparent;
 }
 
 
@@ -244,6 +246,7 @@ main > section > .background {
 	background: var(--jj-blue);
 	box-shadow: 0 0 2px var(--jj-blue);
 	color: var(--jj-white);
+	outline-color: var(--jj-off-white);
 }
 
 footer {
