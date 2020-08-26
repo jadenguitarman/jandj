@@ -3,7 +3,361 @@
 	<head>
 		<title>{{ .Site.Title }}</title>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="/css/_global.css">
+		<style>
+			/* initial definitions */
+			:root {
+				--scroll-pos: 0px;
+				--jj-blue: #0081a2;
+				--jj-transparent-blue: rgba(53, 163, 198, 0.5);
+				--jj-dark-blue: #195e83;
+				--jj-off-white: #f3f6f9;
+				--jj-white: #fff;
+				--jj-slate-gray: #101010;
+				--jj-mid-gray: #808080;
+			}
+
+			@font-face {
+				font-family: "Autodidact";
+				src: url("/assets/Autodidact Regular.woff");
+				font-display: swap;
+			}
+
+			@font-face {
+				font-family: "Raleway";
+				src: url("/assets/Raleway Regular.woff");
+				font-display: swap;
+			}
+
+			* {
+				font-family: "Raleway", sans-serif;
+				margin: 0;
+				padding: 0;
+				border: 0;
+			}
+
+
+
+			/* style some specific elements and classes */
+			h1, h2, h3, h4, h5, h6, button, .button, input, label, select, nav *, .autodidact {
+				font-family: "Autodidact", sans-serif;
+				letter-spacing: 0.05em;
+			}
+
+			html {
+				scroll-behavior: smooth;
+			}
+
+			body {
+				margin: 0;
+				padding: 0;
+				display: flex;
+				justify-content: space-between;
+				align-items: stretch;
+			}
+
+			h1, h2, h3, h4, h5, h6 {
+				text-align: center;
+			}
+
+			picture > img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			input, select, textarea {
+				border-radius: 3px;
+				border: 2px solid var(--compass-wave-border-color);
+				outline: none;
+				font-size: 18px;
+			}
+
+			select, option {
+				cursor: pointer;
+			}
+
+			select > option[disabled] {
+				display: none;
+			}
+
+			input[name=honeypot], input[name=honeypot] + label {
+				opacity: 0;
+				width: 0;
+				height: 0;
+				border: 0;
+				pointer-events: none;
+				outline: 0;
+				padding: 0;
+				background: transparent;
+				margin: 0;
+				font-size: 0;
+				color: transparent;
+			}
+
+
+
+			/* jj-auto standard navigation */
+			nav {
+				flex-grow: 1;
+				height: 100vh;
+				width: 300px;
+				position: fixed;
+				left: -300px;
+				transition: left 0.5s;
+				top: 0;
+				background: rgba(0, 0, 0, 0.3);
+				z-index: 1;
+			}
+
+			nav.open {
+				left: 0;
+			}
+
+			nav * {
+				color: var(--jj-off-white);
+				width: 300px;
+				font-weight: 700;
+				text-decoration: none;
+				text-align: center;
+			}
+
+			nav > #close-nav, nav > #expand-nav {
+				fill: var(--jj-off-white);
+				top: 30px;
+				cursor: pointer;
+				left: 30px;
+			}
+
+			nav > #close-nav {
+				position: absolute;
+				width: 25px;
+			}
+
+			nav > #expand-nav {
+				position: fixed;
+				width: 30px;
+				overflow: visible;
+				opacity: 1;
+				transition: opacity 0.3s;
+			}
+
+			@keyframes hamburger {
+				0%, 20% {
+					transform: translateX(0%);
+				}
+
+				80%, 100% {
+					transform: translateX(50%);
+				}
+			}
+
+			nav > #expand-nav:hover > :last-child {
+				animation: hamburger 1.3s cubic-bezier(.6, -1, .6, 2) alternate infinite;
+			}
+
+			nav.open > #expand-nav {
+				opacity: 0;
+				pointer-events: none;
+			}
+
+			nav > h1 {
+				position: fixed;
+				bottom: 105%;
+				transition: bottom 0.5s;
+				font-size: 5vh;
+				margin: 0;
+			}
+
+			nav > .container {
+				height: 100vh;
+				position: absolute;
+				top: 10vh;
+				transition: height 0.5s, top 0.5s;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				align-items: stretch;
+			}
+
+			nav > .container > a {
+				font-size: 3vh;
+				height: 8vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				box-sizing: border-box;
+			}
+
+			nav > .container > a:hover {
+				background: var(--jj-transparent-blue);
+				border: 2px solid var(--jj-dark-blue);
+			}
+
+			nav.show-logo > h1 {
+				bottom: 80vh;
+			}
+
+			nav.show-logo > .container {
+				height: 80vh;
+				top: 20vh;
+			}
+
+
+
+			/* main content */
+			main {
+				width: 100%;
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+
+			main > section {
+				width: 100%;
+			}
+
+			main > section > .background {
+				position: fixed;
+				right: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				z-index: -1;
+			}
+
+
+
+			/* jj-auto standard button */
+			.button {
+				padding: 10px;
+				font-size: 3vh;
+				border-radius: 3px;
+				text-decoration: none;
+				transition: all 0.1s ease-in;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				box-sizing: border-box;
+				cursor: pointer;
+			}
+
+			.button.open {
+				background: var(--jj-off-white);
+				border: 3px solid var(--jj-blue);
+				color: var(--jj-slate-gray);
+			}
+
+			.button.filled, .button.open:hover {
+				background: var(--jj-blue);
+				box-shadow: 0 0 2px var(--jj-blue);
+				color: var(--jj-white);
+				outline-color: var(--jj-off-white);
+			}
+
+			footer {
+				position: sticky;
+				height: 10vh;
+				background: var(--jj-off-white);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			footer > span > a {
+				font-style: italic;
+				font-family: Autodidact;
+				font-size: 20px;
+				color: #116;
+			}
+
+
+			/* form inputs */
+
+			.form-field {
+				width: 100%;
+				position: relative;
+			}
+
+			.form-field {
+				min-height: 50px;
+			}
+
+			.form-field > input[type=text],
+			.form-field > input[type=date],
+			.form-field > input[type=password],
+			.form-field > input[type=email],
+			.form-field > input[type=phone],
+			.form-field > input[type=file],
+			.form-field > input:-webkit-autofill,
+			.form-field > select,
+			.form-field > textarea {
+				width: 100%;
+				height: 28px;
+				box-sizing: border-box;
+				position: absolute;
+				bottom: 0;
+				color: var(--compass-wave-gray);
+				transition: color 0.5s;
+				background: #fff;
+				left: 0;
+			}
+
+			.form-field > input[type=text],
+			.form-field > input[type=date],
+			.form-field > input[type=password],
+			.form-field > input[type=email],
+			.form-field > input[type=phone],
+			.form-field > textarea {
+				padding: 7px 5px 2px 5px;
+			}
+
+			.form-field > select {
+				padding: 2px 5px 2px 0px;
+			}
+
+			.form-field > label {
+				--label-top: 26px;
+				--label-left: 5px;
+				color: var(--jj-mid-gray);
+				position: relative;
+				top: var(--label-top);
+				left: var(--label-left);
+				font-style: italic;
+				transition: all 0.3s ease-in, color 0.3s ease-out;
+				font-size: 16px;
+				white-space: nowrap;
+				pointer-events: none;
+			}
+
+			.form-field > label > .required {
+				color: red;
+				font-size: 25px;
+				position: absolute;
+				top: -5px;
+			}
+
+			.form-field > input:not(:placeholder-shown) + label,
+			.form-field > input:focus + label,
+			.form-field > input:-webkit-autofill + label,
+			.form-field > select + label,
+			.form-field > input[type=file] + label,
+			.form-field > textarea:not(:placeholder-shown) + label,
+			.form-field > textarea:focus + label {
+				--label-left: 0px;
+				--label-active-top: 4px;
+				color: var(--dark-label-color);
+				top: var(--label-active-top);
+				left: var(--label-left);
+				font-weight: 700;
+				font-size: 14px;
+			}
+
+			.form-field > .button.submit {
+				margin-top: 5px;
+				width: 100%;
+			}
+		</style>
 		<link rel="stylesheet" href="/css/{{ .Params.css }}.css">
 		<meta content="width=device-width, initial-scale=1" name="viewport" />
 		<meta name="description" content="{{ .Params.Description }}">
@@ -16,7 +370,6 @@
 		{{ range $url := .Params.additional_js }}
 			<script defer async src="{{$url}}"></script>
 		{{ end }}
-		<script defer async src="/js/_global.js"></script>
 		<script>
 			const expandNav = document.getElementById("expand-nav");
 			let sectionIndex = Math.floor((expandNav.getBoundingClientRect().top + window.scrollY) / window.innerHeight);
@@ -31,7 +384,7 @@
 					sectionIndex = newSection;
 				}
 			});
-			
+
 			window.addEventListener("load", () => {
 				const nav = document.querySelector("nav");
 				[...document.querySelectorAll("nav > .container > a")].forEach(a => {
